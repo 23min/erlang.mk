@@ -135,7 +135,8 @@ ebin/$(PROJECT).app: $(shell find src -type f -name \*.erl) \
 		$(shell find src -type f -name \*.core) \
 		$(shell find src -type f -name \*.xrl) \
 		$(shell find src -type f -name \*.yrl) \
-		$(shell find templates -type f -name \*.dtl 2>/dev/null)
+		$(shell find templates -type f -name \*.dtl 2>/dev/null) \
+		$(shell find priv/templates -type f -name \*.dtl 2>/dev/null)
 	@mkdir -p ebin/
 	$(if $(strip $(filter %.erl %.core,$?)), \
 		$(call compile_erl,$(filter %.erl %.core,$?)))
