@@ -127,7 +127,7 @@ define compile_dtl
 	$(dtl_verbose) erl -noshell -pa ebin/ $(DEPS_DIR)/erlydtl/ebin/ -eval ' \
 		Compile = fun(F) -> \
 			Module = list_to_atom( \
-				string:to_lower(filename:basename(F, ".dtl")) ++ "_dtl"), \
+				string:to_lower(filename:basename(F, ".dtl")) ++ $(DTL_SUFFIX)), \
 			erlydtl_compiler:compile(F, Module, [{out_dir, "ebin/"}]) \
 		end, \
 		_ = [Compile(F) || F <- string:tokens("$(1)", " ")], \
